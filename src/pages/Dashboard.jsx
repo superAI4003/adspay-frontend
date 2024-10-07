@@ -4,7 +4,7 @@ import Header from '../components/layouts/Header';
 import Quick_Tip from '../components/common/alerts/Quick_Tip';
 import Main_Balance_Cards from '../components/common/cards/Main_Balance_Cards';
 import Total_Balance_Cards from '../components/common/cards/Total_Balance_Cards';
-import Ads from '../components/common/ads';
+import Ads from '../components/common/Ads';
 import User_State from '../components/common/User_State';
 import News from '../components/common/News';
 import Recent_Deposit from '../components/common/tables/Recent_Deposit';
