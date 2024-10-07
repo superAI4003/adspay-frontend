@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import AuthPage from './pages/AuthPage';
-import Dashboard from './pages/dashboard';
-import AccountLevel from './pages/AccountLevel';
-import IssueNewCard from './pages/IssueNewCard';
-import MyCards from './pages/MyCards';
-import CardOverview from './pages/CardOverview';
-import Profile from './pages/Profile';
-import Affiliate from './pages/Affiliate';
+import AuthPage from './pages/AuthPage.jsx';
+import Dashboard from './pages/dashboard.jsx';
+import AccountLevel from './pages/AccountLevel.jsx';
+import IssueNewCard from './pages/IssueNewCard.jsx';
+import MyCards from './pages/MyCards.jsx';
+import CardOverview from './pages/CardOverview.jsx';
+import Profile from './pages/Profile.jsx';
+import Affiliate from './pages/Affiliate.jsx';
 
 function App() {
   
