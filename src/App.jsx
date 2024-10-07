@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AuthPage from './pages/AuthPage.jsx';
-import Dashboard from './pages/dashboard.jsx';
+import Dashboard from './pages/Dashboard.jsx';
 import AccountLevel from './pages/AccountLevel.jsx';
 import IssueNewCard from './pages/IssueNewCard.jsx';
 import MyCards from './pages/MyCards.jsx';
