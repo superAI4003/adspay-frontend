@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../components/layouts/header';
+import Header from '../components/layouts/Header';
 import Issue_Card from '../components/common/cards/Issue_Card';
 import My_Card from '../components/common/cards/My_Card';
 

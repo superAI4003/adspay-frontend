@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../components/layouts/header";
+import Header from "../components/layouts/Header";
 import { MdOutlineChevronLeft } from "react-icons/md";
 import Primary_Card_Md from "../components/common/cards/Primary_Card_md";
 import icon_copy from "../assets/images/icons/icon_copy.png";

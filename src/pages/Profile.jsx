@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../components/layouts/header";
+import Header from "../components/layouts/Header";
 import { MdOutlineChevronLeft } from "react-icons/md";
 import Primary_Input from "../components/common/buttons/primary_input";
 import avatar from "../assets/images/avatars/avatar.png";

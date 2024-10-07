@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import Header from "../components/layouts/header";
+import Header from "../components/layouts/Header";
 
 import * as Switch from "@radix-ui/react-switch";
 

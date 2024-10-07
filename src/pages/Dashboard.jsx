@@ -1,6 +1,6 @@
 import React from 'react';
 import Footer from '../components/layouts/Footer';
-import Header from '../components/layouts/header';
+import Header from '../components/layouts/Header';
 import Quick_Tip from '../components/common/alerts/Quick_Tip';
 import Main_Balance_Cards from '../components/common/cards/Main_Balance_Cards';
 import Total_Balance_Cards from '../components/common/cards/Total_Balance_Cards';
