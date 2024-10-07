@@ -23,7 +23,10 @@ jobs:
 
       - name: Build React app
         run: npm run build
-
+        
+      - name: List directory contents
+        run: ls -al
+        
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v0.1.5
         with:
