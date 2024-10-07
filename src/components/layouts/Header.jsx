@@ -49,7 +49,7 @@ function Header() {
           <img src={logo} />
           <div>
             <div className="flex justify-center items-center gap-2">
-              <p className="text-[12px]">Account LevelTTTTTT</p>
+              <p className="text-[12px]">Account Level1TTTTTT</p>
               <div style={{ width: 24, height: 24 }}>
                 <CircularProgressbarWithChildren
                   value={66}
