@@ -14,7 +14,7 @@ import icon_br from "../assets/images/flags/iconf_brf.png";
 import icon_mastercard from "../assets/images/icons/icon_mastercard.png";
 import icon_visa from "../assets/images/icons/icon_visa.png";
 import Issue_New_Card_States from "../components/common/cards/Issue_New_Card_States";
-import Primary_Input from "../components/common/buttons/primary_input";
+import Primary_Input from "../components/common/buttons/Primary_Input";
 import icon_wallet from "../assets/images/icons/icon_wallet.png";
 import Primary_Card from "../components/common/cards/Primary_Card";
 

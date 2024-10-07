@@ -1,6 +1,6 @@
 import React, { useState,useRef } from 'react';
 import Google_Button from '../common/buttons/Google_Button';
-import Primary_Input from '../common/buttons/primary_input';
+import Primary_Input from '../common/buttons/Primary_Input';
 import Sidebar_Card from '../../assets/images/bgs/sidebar_card.png'
 import Sidebar_Bg from '../../assets/images/bgs/sidebar_bg.png'
 

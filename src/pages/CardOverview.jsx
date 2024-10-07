@@ -1,9 +1,9 @@
 import React from "react";
 import Header from "../components/layouts/Header";
 import { MdOutlineChevronLeft } from "react-icons/md";
-import Primary_Card_Md from "../components/common/cards/Primary_Card_md";
+import Primary_Card_Md from "../components/common/cards/Primary_Card_Md";
 import icon_copy from "../assets/images/icons/icon_copy.png";
-import Primary_Input from "../components/common/buttons/primary_input";
+import Primary_Input from "../components/common/buttons/Primary_Input";
 import icon_card_receive from "../assets/images/icons/icon_card_receive.png";
 import Transaction from "../components/common/tables/transaction";
 import Checkbox from "../components/common/buttons/Checkbox";

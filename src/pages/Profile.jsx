@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../components/layouts/Header";
 import { MdOutlineChevronLeft } from "react-icons/md";
-import Primary_Input from "../components/common/buttons/primary_input";
+import Primary_Input from "../components/common/buttons/Primary_Input";
 import avatar from "../assets/images/avatars/avatar.png";
 import { AiOutlineEdit } from "react-icons/ai";
 

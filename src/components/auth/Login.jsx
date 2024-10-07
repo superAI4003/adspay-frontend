@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Google_Button from '../common/buttons/Google_Button';
-import Primary_Input from '../common/buttons/primary_input';
+import Primary_Input from '../common/buttons/Primary_Input';
 import Sidebar_Card from '../../assets/images/bgs/sidebar_card.png'
 import icon_social_google from '../../assets/images/icons/icon_social_google.png'
 import icon_social_x from '../../assets/images/icons/icon_social_x.png'
