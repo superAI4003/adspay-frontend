@@ -26,7 +26,8 @@ jobs:
         
       - name: List directory contents
         run: ls -al
-        
+      - name: Check current directory
+        run: pwd
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v0.1.5
         with:
