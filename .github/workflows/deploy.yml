@@ -35,7 +35,7 @@ jobs:
         with:
           host: 161.35.15.35
           username: root
-          password: "1234"
+          password: ${{ secrets.SSH_PASSWORD }}
           port: 22
           source: "/*"
           target: "/var/www/frontend"
