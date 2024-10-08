@@ -26,6 +26,8 @@ jobs:
         
       - name: List directory contents
         run: ls -al
+      - name: List dist directory contents
+        run: ls -al dist
       - name: Check current directory
         run: pwd
       - name: Deploy via SSH
