@@ -38,6 +38,6 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           port: 22
           script: |
-            sudo rm -rf /var/www/frontend/dist/*
-            find /home/runner/work/adspay-frontend/adspay-frontend/dist -type f -exec scp {} /var/www/frontend \;
+            sudo rm -rf /var/www/frontend/dist/* 
+            scp -r "/home/runner/work/adspay-frontend/adspay-frontend/dist/*" "/var/www/frontend"
             sudo systemctl restart nginx
