@@ -1,0 +1,5 @@
+ssh root@161.35.15.35
+rm -r /var/www/frontend/dist
+scp -r ./dist root@161.35.15.35:/var/www/frontend
+s07!XAs22X
+sudo systemctl restart nginx

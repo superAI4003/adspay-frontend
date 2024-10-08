@@ -21,25 +21,22 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build React app
+      - name: Build the project
         run: npm run build
-        
-      - name: List directory contents
-        run: ls -al
-      - name: List dist directory contents
-        run: ls -al dist
-      # - name: Check current directory
-      #   run: sudo rm -rf /var/www/frontend/dist/*
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v0.1.7
-        with:
-          host: 161.35.15.35
-          username: root
-          password: ${{secrets.MY_SSH}}
-          port: 22
-          script: |
-            scp -o StrictHostKeyChecking=no -r ./dist/* root@161.35.15.35:/var/www/frontend/dist/
 
+      - name: Add SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_HSC }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+        shell: bash
 
-      - name: Restart nginx
-        run: sudo systemctl restart nginx
+      - name: Deploy to Server
+        run: |
+          ssh -o StrictHostKeyChecking=no root@161.35.15.35 "
+            cd /home/adspay-frontend &&
+            git pull origin main &&
+            npm install &&
+            npm run build &&
+            pm2 restart all
+          "
