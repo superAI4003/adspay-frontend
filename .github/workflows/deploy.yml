@@ -28,8 +28,8 @@ jobs:
         run: ls -al
       - name: List dist directory contents
         run: ls -al dist
-      - name: Check current directory
-        run: sudo rm -rf /var/www/frontend/dist/*
+      # - name: Check current directory
+      #   run: sudo rm -rf /var/www/frontend/dist/*
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v0.1.5
         with:
