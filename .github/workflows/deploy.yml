@@ -37,5 +37,5 @@ jobs:
           port: 22
           script: |
             sudo rm -rf /var/www/frontend/dist/*
-            scp -r ./dist/* /var/www/frontend
+            scp -r /home/runner/work/adspay-frontend/adspay-frontend/dist/* /var/www/frontend
             sudo systemctl restart nginx
