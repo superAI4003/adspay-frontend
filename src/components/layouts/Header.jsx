@@ -65,7 +65,7 @@ function Header() {
                 </CircularProgressbarWithChildren>
               </div>
             </div>
-            <p className="text-[20px] font-medium">Standard</p>
+            <p className="text-[20px] font-medium">Standard1</p>
           </div>
         </div>
         <div className="flex-[30%]  relative h-[90px] justify-center items-center flex gap-[20px]">
