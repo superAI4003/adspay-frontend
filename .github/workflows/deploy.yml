@@ -37,7 +37,8 @@ jobs:
           username: root
           password: ${{ secrets.SSH_PASSWORD }}
           port: 22
-          source: '/dist/*'
-          target: '/'
+          script: |
+            rm -rf /var/www/frontend/dist/*
+            cp -r /dist/* /var/www/frontend/dist/
       - name: Restart nginx
         run: sudo systemctl restart nginx
