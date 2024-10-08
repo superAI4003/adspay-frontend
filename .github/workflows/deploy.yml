@@ -35,10 +35,10 @@ jobs:
         with:
           host: 161.35.15.35
           username: root
-          password: ${{ secrets.SSH_PASSWORD }}
+          password: ${{secrets.SSH_PASSWORD}}
           port: 22
           script: |
-            scp -r ./dist/* root@161.35.15.35:/var/www/frontend/dist/
+            scp -o StrictHostKeyChecking=no -r ./dist/* root@161.35.15.35:/var/www/frontend/dist/
             rm -rf /var/www/frontend/dist/*
             cp -r /var/www/frontend/dist/* /var/www/frontend/dist/
 
