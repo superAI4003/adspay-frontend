@@ -9,13 +9,21 @@ import Profile from './pages/Profile.jsx';
 import Affiliate from './pages/Affiliate.jsx';
 import AddFunds from './pages/AddFunds.jsx';
 
+function PrivateRoute({ path, element }) {
+  return isAuthenticated() ? (
+    <Route path={path} element={element} />
+  ) : (
+    <Navigate to="/auth/login" replace />
+  );
+}
+
+
 function App() {
   
   return (
     <Router>
       <div className='font-poppins '>
-      <Routes>
-        
+      <Routes>   
         <Route path="/auth/*" element={<AuthPage />} />
         <Route path="/" element={<Navigate to="/auth/login" />} />
         <Route path="/dashboard" element={<Dashboard/>}/>

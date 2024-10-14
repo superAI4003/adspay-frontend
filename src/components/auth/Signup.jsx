@@ -10,16 +10,47 @@ import icon_social_discord from '../../assets/images/icons/icon_social_discord.p
 import icon_social_inst from '../../assets/images/icons/icon_social_inst.png'
 import icon_emailbox from '../../assets/images/icons/icon_emailBox.png'
 
-import { Link } from 'react-router-dom';
+import { Link , useNavigate} from 'react-router-dom';
 
 function Signup() {
   const [name, setName]= useState("");
   const [email, setEmail]= useState("");
   const [password, setPassword]= useState("");
   const [step,setStep]=useState(1);
+  const [isLoading, setIsLoading] =useState(false);
+
+  const navigate = useNavigate();
 
   const [otp, setOtp] = useState(Array(4).fill(''));
   const inputsRef = useRef([]);
+
+  const handleSignUp = async () => {
+    // Make a POST request to the /signup endpoint
+    setIsLoading(true);
+    const response = await fetch('http://localhost:8000/auth/signup', {  // Replace with your actual backend URL
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username: name,  // The backend expects a "username" field but we're using the name as the username
+        email: email,
+        password: password
+      })
+    });
+    setIsLoading(false);
+    // If the request was successful
+    if (response.ok) {
+      // Parse the response body as JSON
+      const data = await response.json();
+      // Navigate to login
+      navigate('/auth/login');
+    } else {
+      // If the request failed, throw an error
+      throw new Error('Signup failed');
+    }
+  };
+
   const handleChange = (element, index) => {
     if (isNaN(element.value)) return false;
 
@@ -73,7 +104,8 @@ function Signup() {
   
               
               <button
-              onClick={()=>setStep(2)} 
+              onClick={handleSignUp} 
+              disabled={isLoading}
               className=' border border-primary-button-strike text-[16px] mt-[20px] text-white rounded-[10px] bg-primary-button-gradient hover:bg-primary-button-hover-gradient w-full py-[12px]'>
                 Sign Up
               </button>

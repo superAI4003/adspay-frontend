@@ -13,12 +13,37 @@ function Login() {
   const [email, setEmail]= useState("");
   const [password, setPassword]= useState("");
   const navigate = useNavigate();
+  const [responseOk,setResposeOK]=useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const handleLogin = async () => {
+    // Make a POST request to the /login endpoint
+    setIsLoading(true);
+    const response = await fetch('http://localhost:8000/auth/login', {  // Replace with your actual backend URL
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username: email,  // The backend expects a "username" field but we're using the email as the username
+        password: password
+      })
+    });
+    setIsLoading(false);
+    // If the request was successful
+    if (response.ok) {
+      // Parse the response body as JSON
+      const data = await response.json();
 
-  const handleLogin = () => {
-    // Add your login logic here
-    // If login is successful, navigate to dashboard
-    navigate('/dashboard');
-  }
+      // Store the access token in local storage or cookies
+      localStorage.setItem('token', data.access_token);
+      // Navigate to dashboard
+      navigate('/dashboard');
+    } else {
+      // If the request failed, throw an error
+      setResposeOK(false)
+      console.log("BAd");
+    }
+  };
 
   return (
     <div className="w-full h-screen flex font-poppins">
@@ -54,7 +79,7 @@ function Login() {
             <Google_Button text="Login in with google"/>
             <Primary_Input placeholder="Email" type="text" onChange={(e) => setEmail(e.target.value)}/>
             <Primary_Input placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)}/>
-
+            {!responseOk && <p className='text-[12px] text-red-600 py-3'>Email & Password is not Correct!</p>}
             <div className='flex justify-between px-2 py-[27px]'>
               <div className='flex gap-1'>
                 <input 
@@ -70,6 +95,7 @@ function Login() {
             </div>
             <button
              onClick={handleLogin}
+             disabled={isLoading}
             className='border border-primary-button-strike text-[16px] text-white rounded-[10px] bg-primary-button-gradient hover:bg-primary-button-hover-gradient w-full py-[12px]'>
               Login
             </button>
