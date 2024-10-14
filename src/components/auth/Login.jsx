@@ -7,10 +7,19 @@ import icon_social_x from '../../assets/images/icons/icon_social_x.png'
 import icon_social_discord from '../../assets/images/icons/icon_social_discord.png'
 import icon_social_inst from '../../assets/images/icons/icon_social_inst.png'
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [email, setEmail]= useState("");
   const [password, setPassword]= useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    // Add your login logic here
+    // If login is successful, navigate to dashboard
+    navigate('/dashboard');
+  }
+
   return (
     <div className="w-full h-screen flex font-poppins">
       <div className='flex-[45%] bg-[#121026] h-full rounded-e-xl flex flex-col'>
@@ -57,9 +66,11 @@ function Login() {
                 />
                 <p className='text-[12px]'>Keep Me signed in</p>
               </div>
-              <Link to="/auth/" className='text-[12px] underline border-primary-color text-primary-color'>Forgot Password</Link>
+              <Link to="/auth/reset-password" className='text-[12px] underline border-primary-color text-primary-color'>Forgot Password</Link>
             </div>
-            <button className='border border-primary-button-strike text-[16px] text-white rounded-[10px] bg-primary-button-gradient hover:bg-primary-button-hover-gradient w-full py-[12px]'>
+            <button
+             onClick={handleLogin}
+            className='border border-primary-button-strike text-[16px] text-white rounded-[10px] bg-primary-button-gradient hover:bg-primary-button-hover-gradient w-full py-[12px]'>
               Login
             </button>
             <div className='text-[16px] flex text-center gap-1 justify-center pt-[28px]'>

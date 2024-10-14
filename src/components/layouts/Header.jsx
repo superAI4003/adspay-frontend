@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from 'react-router-dom';
+
 import { Link } from "react-router-dom";
 
 import icon_add_funds_active from "../../assets/images/icons/icon_add_funds_active.png";
@@ -41,7 +43,13 @@ function Header() {
           document.removeEventListener("mousedown", handleClickOutside);
       };
   }, [menuRef]);
+  const navigate = useNavigate();
 
+  const handleLogout = () => {
+    // Add your login logic here
+    // If login is successful, navigate to dashboard
+    navigate('/auth/login');
+  }
   return (
     <div className="w-full flex justify-center flex-col items-center ">
       <div className="flex w-full">
@@ -78,10 +86,10 @@ function Header() {
             <img src={icon_dash_state_balance} alt="balance icon" />
             <p className="text-[25px]">$2,754</p>
           </div>
-          <button className="text-[16px] flex z-20 text-[#546782] gap-[8px] py-[8px] px-[16px] bg-white rounded-[10px]">
+          <Link to="/add-funds" className="text-[16px] flex z-20 text-[#546782] gap-[8px] py-[8px] px-[16px] bg-white rounded-[10px]">
             <img src={icon_dash_state_receive_money} alt="receive icon" />
             Add Funds
-          </button>
+          </Link>
         </div>
         <div className="flex-[35%] flex justify-end items-center gap-[8px]">
           <button className="hover:bg-slate-300 p-1 hover:rounded-md">
@@ -101,7 +109,7 @@ function Header() {
             <div
             className="absolute rounded-[16px] z-50 overflow-hidden font-medium text-[#434750] text-[20px] top-14 right-0 border shadow-lg w-[250px]">
               <div className="px-[30px] py-[16px] bg-[#F1FFF2] border-b flex flex-col gap-1">
-                <p className="hover:text-[#434750]/50">Profile</p>
+                <Link to="/profile" className="hover:text-[#434750]/50">Profile</Link>
                 <p className="text-[#31C737] hover:text-[#31C737]/50">Balance:79,687</p>
               </div>
               <div className="px-[30px] py-[16px] bg-white border-b flex flex-col gap-1">
@@ -110,11 +118,13 @@ function Header() {
                 <p className="hover:text-[#434750]/50">Trnsaction</p>
               </div>
               <div className="px-[30px] py-[16px] bg-white border-b flex flex-col gap-1">
-                <p className="hover:text-[#434750]/50">Affiliate</p>
+                <Link to="/affiliate" className="hover:text-[#434750]/50">Affiliate</Link>
                 <p className="hover:text-[#434750]/50">Email Us</p>
                 <p className="text-[#2437FB] hover:text-[#2437FB]/50">Join Our Telegram</p>
               </div>
-              <p className="px-[30px] py-[16px] bg-[#F8F8F8] hover:text-[#2437FB]/50">Logout</p>
+              <button className="px-[30px] py-[16px] bg-[#F8F8F8] hover:text-[#2437FB]/50 w-full text-left"
+              onClick={()=>handleLogout()}
+              >Logout</button>
             </div>
             )}
           </div>
@@ -126,14 +136,14 @@ function Header() {
           icon={icon_dashboard}
           active_icon={icon_dashboard_active}
           active={true}
-          to="/"
+          to="/dashboard"
         />
         <Nav_Button
           text="My Cards"
           icon={icon_mycards}
           active_icon={icon_mycards_active}
           active={false}
-          to="/"
+          to="/my-cards"
         />
         <Nav_Button
           text="Transaction History"
@@ -147,7 +157,7 @@ function Header() {
           icon={icon_add_funds}
           active_icon={icon_add_funds_active}
           active={false}
-          to="/"
+          to="/add-funds"
         />
       </div>
     </div>

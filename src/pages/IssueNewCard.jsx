@@ -18,10 +18,12 @@ import Primary_Input from "../components/common/buttons/Primary_Input";
 import icon_wallet from "../assets/images/icons/icon_wallet.png";
 import Primary_Card from "../components/common/cards/Primary_Card";
 
-import confirm_img from "../assets/images/bgs/confirm_img.png"
+import confirm_img from "../assets/images/bgs/confirm_img.png";
 function IssueNewCard() {
   const [isSwitchChecked, setIsSwitchChecked] = useState(false);
   const [isCheckedbox, setIsCheckedbox] = useState(false);
+
+  const [steps, setSteps] = useState(0);
   return (
     <div className=" bg-primary-bg-color font-poppins min-h-screen">
       <div className="w-[80%]  mx-auto">
@@ -35,63 +37,67 @@ function IssueNewCard() {
             Issue New Card
           </p>
         </div>
-        <div className="flex justify-between items-center py-[40px]">
-          <div>
-            <p className="text-[12px] py-[8px]">Filter</p>
-            <div className="flex gap-[12px]">
-              <img src={icon_us} alt="icon_us" />
-              <img src={icon_br} alt="icon_br" />
-              <img src={icon_cg} alt="icon_cg" />
-              <img src={icon_cl} alt="icon_cl" />
+       {steps===0 && (<div>
+          <div className="flex justify-between items-center py-[40px]">
+            <div>
+              <p className="text-[12px] py-[8px]">Filter</p>
+              <div className="flex gap-[12px]">
+                <img src={icon_us} alt="icon_us" />
+                <img src={icon_br} alt="icon_br" />
+                <img src={icon_cg} alt="icon_cg" />
+                <img src={icon_cl} alt="icon_cl" />
+              </div>
             </div>
+
+            <Switch.Root
+              id="airplane-mode"
+              onClick={() => setIsSwitchChecked(!isSwitchChecked)}
+            >
+              <Switch.Thumb />
+              {isSwitchChecked ? (
+                <div className="flex gap-[16px] p-[7px] bg-[#EEEEEE] rounded-[9px]">
+                  <img
+                    src={icon_mastercard}
+                    alt="mastercard"
+                    className="px-[8px] rounded-[5px] border bg-white"
+                  />
+                  <img
+                    src={icon_visa}
+                    alt="visa "
+                    className="px-[10px] rounded-[5px] opacity-20 "
+                  />
+                </div>
+              ) : (
+                <div className="flex gap-[16px] p-[7px] bg-[#EEEEEE] rounded-[9px]">
+                  <img
+                    src={icon_mastercard}
+                    alt="mastercard"
+                    className="px-[8px] rounded-[5px]  opacity-20"
+                  />
+                  <img
+                    src={icon_visa}
+                    alt="visa "
+                    className="px-[10px] rounded-[5px] border bg-white"
+                  />
+                </div>
+              )}
+            </Switch.Root>
           </div>
-
-          <Switch.Root
-            id="airplane-mode"
-            onClick={() => setIsSwitchChecked(!isSwitchChecked)}
-          >
-            <Switch.Thumb />
-            {isSwitchChecked ? (
-              <div className="flex gap-[16px] p-[7px] bg-[#EEEEEE] rounded-[9px]">
-                <img
-                  src={icon_mastercard}
-                  alt="mastercard"
-                  className="px-[8px] rounded-[5px] border bg-white"
-                />
-                <img
-                  src={icon_visa}
-                  alt="visa "
-                  className="px-[10px] rounded-[5px] opacity-20 "
-                />
-              </div>
-            ) : (
-              <div className="flex gap-[16px] p-[7px] bg-[#EEEEEE] rounded-[9px]">
-                <img
-                  src={icon_mastercard}
-                  alt="mastercard"
-                  className="px-[8px] rounded-[5px]  opacity-20"
-                />
-                <img
-                  src={icon_visa}
-                  alt="visa "
-                  className="px-[10px] rounded-[5px] border bg-white"
-                />
-              </div>
-            )}
-          </Switch.Root>
-          
-        </div>
-        <p className="text-[16px] text-[#5c5c5c] pb-[50px] max-w-[900px] ">
-        Virtual cards are the modern solution for seamless online payments. Whether you’re managing ads or shopping, these cards provide security and flexibility. Easily use them for Google, Facebook, TikTok ads, and more!
-        </p>
-        <div className="flex flex-col gap-[20px]">
-            <Issue_New_Card_States/>
-            <Issue_New_Card_States/>
-            <Issue_New_Card_States/>
-
-        </div>
-{/* 
-        <div className="flex mt-[70px] bg-white border rounded-[8px] px-[32px] py-[20px]">
+          <p className="text-[16px] text-[#5c5c5c] pb-[50px] max-w-[900px] ">
+            Virtual cards are the modern solution for seamless online payments.
+            Whether you’re managing ads or shopping, these cards provide
+            security and flexibility. Easily use them for Google, Facebook,
+            TikTok ads, and more!
+          </p>
+          <div className="flex flex-col gap-[20px]">
+            <Issue_New_Card_States onClick={()=>setSteps(1)}/>
+            <Issue_New_Card_States onClick={()=>setSteps(1)} />
+            <Issue_New_Card_States  onClick={()=>setSteps(1)}/>
+          </div>
+        </div>)
+}
+        
+       { steps===1 && (<div className="flex mt-[70px] bg-white border rounded-[8px] px-[32px] py-[20px] mb-[60px]">
           <div className="flex-1 pr-[38px]">
             <Primary_Input
               placeholder="Main Account Balance"
@@ -116,7 +122,9 @@ function IssueNewCard() {
               checked={isCheckedbox}
               className="pb-[54px] pt-[28px]"
             />
-            <button className="flex justify-center w-full items-center gap-2 flex-[60%] bg-primary-button-gradient text-white rounded-lg py-[24px] border hover:bg-primary-button-hover-gradient">
+            <button
+            onClick={()=>setSteps(2)} 
+            className="flex justify-center w-full items-center gap-2 flex-[60%] bg-primary-button-gradient text-white rounded-lg py-[24px] border hover:bg-primary-button-hover-gradient">
               <img
                 src={icon_wallet}
                 alt="recive moeny icon"
@@ -157,39 +165,42 @@ function IssueNewCard() {
               </div>
             </div>
           </div>
-        </div> */}
+        </div>)
+}
+      {steps===2 && (<div className="bg-white border rounded-[8px] w-full pb-[36px]">
+          <div className="w-full flex rounded-b-[8px] overflow-hidden">
+              <div className="bg-[#1AB55F] w-[40%]"></div>
+              <div className="bg-[#27D073] w-[60%] flex justify-end ">
+                  <p className="font-semibold text-[16px] text-white font-poppins py-[1px] px-[30px]">Maximum: 28:50/30</p>
+              </div>
+          </div>
+          <div className=" w-full">
+              <img src={confirm_img} alt="confirm image" className="mx-auto pt-[30px] pb-[10px]"/>
+              <p className="text-center text-[16px] text-[#5C5C5C]">0 of 3 confirmations</p>
+          </div>
+          <div className="w-[507px] h-[1px] mx-auto my-[35px]  bg-[#D2D2D2]">
+          </div>
+          <div className="w-[350px] mx-auto">
+              <Primary_Card/>
+          </div>
+          <p className="text-[16px] pt-[10px] pb-[35px] text-center text-[#5C5C5C]">Card of this type can be used for any purchases</p>
+          <div className="px-[25px] rounded-[8px] border bg-white pt-[10px]  w-[507px] mx-auto">
+            <p className="font-medium text-[16px]  pb-[16px]">
+              Information about your operation
+            </p>
+            <div className="flex justify-between pb-[8px]">
+              <p className="text-[#2A2A2A] text-[16px]">Card Price</p>
+              <p className="text-[#787878] text-[16px] font-semibold">$5.0</p>
+            </div>
+            <div className="flex justify-between pb-[8px]">
+              <p className="text-[#2A2A2A] text-[16px]">Deposit Amount</p>
+              <p className="text-[#787878] text-[16px] font-semibold">$100</p>
+            </div>
+          </div>
+      </div>)}
+      <div className="py-[40px]">
 
-        {/* <div className="bg-white border rounded-[8px] w-full pb-[36px]">
-            <div className="w-full flex rounded-b-[8px] overflow-hidden">
-                <div className="bg-[#1AB55F] w-[40%]"></div>
-                <div className="bg-[#27D073] w-[60%] flex justify-end ">
-                    <p className="font-semibold text-[16px] text-white font-poppins py-[1px] px-[30px]">Maximum: 28:50/30</p>
-                </div>
-            </div>
-            <div className=" w-full">
-                <img src={confirm_img} alt="confirm image" className="mx-auto pt-[30px] pb-[10px]"/>
-                <p className="text-center text-[16px] text-[#5C5C5C]">0 of 3 confirmations</p>
-            </div>
-            <div className="w-[507px] h-[1px] mx-auto my-[35px]  bg-[#D2D2D2]">
-            </div>
-            <div className="w-[350px] mx-auto">
-                <Primary_Card/>
-            </div>
-            <p className="text-[16px] pt-[10px] pb-[35px] text-center text-[#5C5C5C]">Card of this type can be used for any purchases</p>
-            <div className="px-[25px] rounded-[8px] border bg-white pt-[10px]  w-[507px] mx-auto">
-              <p className="font-medium text-[16px]  pb-[16px]">
-                Information about your operation
-              </p>
-              <div className="flex justify-between pb-[8px]">
-                <p className="text-[#2A2A2A] text-[16px]">Card Price</p>
-                <p className="text-[#787878] text-[16px] font-semibold">$5.0</p>
-              </div>
-              <div className="flex justify-between pb-[8px]">
-                <p className="text-[#2A2A2A] text-[16px]">Deposit Amount</p>
-                <p className="text-[#787878] text-[16px] font-semibold">$100</p>
-              </div>
-            </div>
-        </div> */}
+      </div>
       </div>
     </div>
   );

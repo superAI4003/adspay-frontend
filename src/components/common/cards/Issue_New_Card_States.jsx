@@ -2,7 +2,7 @@ import React from "react";
 import IssueNewCard from "../../../pages/IssueNewCard";
 import Issue_New_Card from "./Issue_New_Card";
 
-function Issue_New_Card_States() {
+function Issue_New_Card_States({onClick}) {
   return (
     <div className="flex rounded-[12px] p-[12px] border gap-[20px] ">
       <div className="flex-1">
@@ -17,7 +17,9 @@ function Issue_New_Card_States() {
         <p className="text-[#727272] text-[20px] font-light">Each Decline costs</p>
       </div>
       <div className="flex-1 flex items-center w-full pr-[30px]">
-          <button className="text-[#434750] text-[16px] w-full py-[8px] rounded-[10px] border bg-[#CEFFC2] hover:bg-[#A7D99C] ">
+          <button
+            onClick={onClick}
+          className="text-[#434750] text-[16px] w-full py-[8px] rounded-[10px] border bg-[#CEFFC2] hover:bg-[#A7D99C] ">
         Purchase this Card
        </button>
        </div>
