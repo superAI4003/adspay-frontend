@@ -18,7 +18,7 @@ function Signup() {
   const [password, setPassword]= useState("");
   const [step,setStep]=useState(1);
   const [isLoading, setIsLoading] =useState(false);
-
+  const [errors, setErrors] =useState(false);
   const navigate = useNavigate();
 
   const [otp, setOtp] = useState(Array(4).fill(''));
@@ -47,7 +47,7 @@ function Signup() {
       navigate('/auth/login');
     } else {
       // If the request failed, throw an error
-      throw new Error('Signup failed');
+      setErrors(true);
     }
   };
 
@@ -101,8 +101,9 @@ function Signup() {
               <Primary_Input placeholder="Name" type="text" onChange={(e) => setName(e.target.value)}/>
               <Primary_Input placeholder="Email" type="text" onChange={(e) => setEmail(e.target.value)}/>
               <Primary_Input placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)}/>
-  
-              
+
+{errors && <p className='text-[12px] text-red-600 py-2'>Email is already exist.</p>
+}             
               <button
               onClick={handleSignUp} 
               disabled={isLoading}

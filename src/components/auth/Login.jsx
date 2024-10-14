@@ -8,6 +8,8 @@ import icon_social_discord from '../../assets/images/icons/icon_social_discord.p
 import icon_social_inst from '../../assets/images/icons/icon_social_inst.png'
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { toast,ToastContainer } from 'react-toastify';
+
 
 function Login() {
   const [email, setEmail]= useState("");
@@ -16,32 +18,25 @@ function Login() {
   const [responseOk,setResposeOK]=useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const handleLogin = async () => {
-    // Make a POST request to the /login endpoint
     setIsLoading(true);
-    const response = await fetch('http://localhost:8000/auth/login', {  // Replace with your actual backend URL
+    const response = await fetch('http://localhost:8000/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        username: email,  // The backend expects a "username" field but we're using the email as the username
+        email: email,  // The backend expects a "username" field but we're using the email as the username
         password: password
       })
     });
     setIsLoading(false);
-    // If the request was successful
     if (response.ok) {
-      // Parse the response body as JSON
       const data = await response.json();
-
-      // Store the access token in local storage or cookies
       localStorage.setItem('token', data.access_token);
-      // Navigate to dashboard
       navigate('/dashboard');
     } else {
-      // If the request failed, throw an error
+      toast('Email & Password is not Correct!');
       setResposeOK(false)
-      console.log("BAd");
     }
   };
 
@@ -105,7 +100,9 @@ function Login() {
             </div>
           </div>
         </div>
-      </div>
+      </div>  
+      <ToastContainer />
+
     </div>
   );
 }
