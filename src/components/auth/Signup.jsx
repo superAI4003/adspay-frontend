@@ -71,7 +71,7 @@ function Signup() {
           backgroundSize: "cover",
         }}
       >
-        <img src={Sidebar_Card} alt="sidebar_card" className=" mx-auto w-[505px] h-[495px]" />
+        <img src={Sidebar_Card} alt="sidebar_card" className=" mx-auto w-[630px] h-[670px]" />
         <div className="w-full bg-[#263A52]/35 pl-[60px] flex-grow rounded-br-xl">
           <p className="text-[26px] text-white font-bold pt-[40px] ">
             Get virtual credit cards and pay your bills

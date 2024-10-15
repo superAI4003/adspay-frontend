@@ -44,7 +44,7 @@ function Login() {
   return (
     <div className="w-full h-screen flex font-poppins">
       <div className='flex-[45%] bg-[#121026] h-full rounded-e-xl flex flex-col'>
-        <img src={Sidebar_Card} alt='sidebar_card' className=' mx-auto w-[505px] h-[495px]'/>
+        <img src={Sidebar_Card} alt='sidebar_card' className=' mx-auto w-[630px] h-[670px]'/>
         <div className='w-full bg-primary-button-gradient pl-[60px] flex-grow rounded-br-xl'>
           <p className='text-[26px] text-white font-bold pt-[40px] '>Get virtual credit cards and pay your bills</p>
           <p className='text-[16px] text-white pt-[20px]'>

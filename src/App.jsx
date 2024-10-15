@@ -8,7 +8,7 @@ import CardOverview from './pages/CardOverview.jsx';
 import Profile from './pages/Profile.jsx';
 import Affiliate from './pages/Affiliate.jsx';
 import AddFunds from './pages/AddFunds.jsx';
-
+import AnimatedPageWrapper from './components/animations/AnimatedPageWrapper.jsx';
 function PrivateRoute({ path, element }) {
   return isAuthenticated() ? (
     <Route path={path} element={element} />
@@ -23,6 +23,7 @@ function App() {
   return (
     <Router>
       <div className='font-poppins '>
+      <AnimatedPageWrapper>
       <Routes>   
         <Route path="/auth/*" element={<AuthPage />} />
         <Route path="/" element={<Navigate to="/auth/login" />} />
@@ -35,8 +36,9 @@ function App() {
         <Route path="/affiliate" element={<Affiliate/>}/>
         <Route path="/add-funds" element={<AddFunds/>}/>
       </Routes>
+</AnimatedPageWrapper>
+     
       </div>
-
     </Router>
   )
 }

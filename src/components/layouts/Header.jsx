@@ -29,7 +29,7 @@ import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 function Header() {
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef(); // Create a ref
-
+  const [active, setActive] = useState(1);
   // Add event listener to document
   useEffect(() => {
       function handleClickOutside(event) {
@@ -135,28 +135,28 @@ function Header() {
           text="Dashboard"
           icon={icon_dashboard}
           active_icon={icon_dashboard_active}
-          active={true}
+          active={active===1}
           to="/dashboard"
         />
         <Nav_Button
           text="My Cards"
           icon={icon_mycards}
           active_icon={icon_mycards_active}
-          active={false}
+          active={active===2}
           to="/my-cards"
         />
         <Nav_Button
           text="Transaction History"
           icon={icon_transaction}
           active_icon={icon_transaction_active}
-          active={false}
+          active={active===2}
           to="/"
         />
         <Nav_Button
           text="Add Funds"
           icon={icon_add_funds}
           active_icon={icon_add_funds_active}
-          active={false}
+          active={active===3}
           to="/add-funds"
         />
       </div>
