@@ -19,11 +19,12 @@ function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const handleLogin = async () => {
     setIsLoading(true);
-    const response = await fetch('http://161.35.15.35:8000/auth/login', {
-      method: 'POST',
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/auth/login`, {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
+    
       body: JSON.stringify({
         email: email,  // The backend expects a "username" field but we're using the email as the username
         password: password
